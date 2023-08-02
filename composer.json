@@ -1,0 +1,23 @@
+{
+    "name": "konstantinfilin/larasettings",
+    "description": "Laravel settings manaager",
+    "autoload": {
+        "psr-4": {
+            "KonstantinFilin\\LaraSettings\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Konstantin S. Filin",
+            "email": "info@kfilin.ru"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KonstantinFilin\\LaraSettings\\Providers\\AppServiceProvider"
+            ]
+        }
+    }
+}
