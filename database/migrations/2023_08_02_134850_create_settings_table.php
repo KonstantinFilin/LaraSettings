@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('larasettings', function (Blueprint $table) {
             $table->integerIncrements('id')->unsigned();
             $table->string('key')->unique();
+            $table->string('label')->unique();
             $table->string('value')->default('');
         });
     }
