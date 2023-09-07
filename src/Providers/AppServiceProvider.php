@@ -22,8 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $basepath = __DIR__.'/../../';
+        //echo realpath($path); die;
+        $this->loadMigrationsFrom($basepath . 'database/migrations');
+        $this->loadRoutesFrom($basepath . 'routes/web.php');
+
+        $this->loadViewsFrom($basepath . 'views', 'larasettings');
+        
         if ($this->app->runningInConsole()) {
             $this->commands([
+                \KonstantinFilin\LaraSettings\Console\Commands\Fixture::class
             ]);
         }
     }
