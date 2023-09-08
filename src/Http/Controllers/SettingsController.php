@@ -18,7 +18,7 @@ class SettingsController extends BaseController
     public function save() {
         $data = request()->all();
         unset($data['_token']);
-        
+
         foreach($data as $id => $value) {
             $m = Setting::find($id);
             $m->value = $value;
