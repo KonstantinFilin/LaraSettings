@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use KonstantinFilin\LaraSettings\Models\SettingItem;
+use KonstantinFilin\LaraSettings\Models\Setting;
 
 return new class extends Migration
 {
@@ -16,7 +16,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('larasettings', function (Blueprint $table) {
-            $table->enum('type', SettingItem::getTypeList())->default(SettingItem::TYPE_STR);
+            $table->enum('type', Setting::getTypeList())->default(Setting::TYPE_STR);
             $table->string('data')->nullable();
         });
     }

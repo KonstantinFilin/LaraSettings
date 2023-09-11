@@ -13,6 +13,7 @@ class Setting extends Model
     
     const TYPE_STR = 'str';
     const TYPE_LST = 'lst';
+    const TYPE_BOOL = 'bool';
     
     protected $casts = [
         'data' => 'array'
@@ -25,32 +26,17 @@ class Setting extends Model
     public static function getTypeList() {
         return [
             self::TYPE_STR,
-            self::TYPE_LST
+            self::TYPE_LST,
+            self::TYPE_BOOL
         ];
-    }
-    
-    public function getAbcAttribute() {
-        $ret = [];
-        
-        /*if (!$this->data) {
-            return [];
-        }*/
-        
-        /*$dataJson = json_decode($this->data, true);
-        
-        if ($dataJson) {
-            foreach ($dataJson as $k => $v) {
-                $ret[$k] = $v;
-            }
-        }*/
-        
-        // dd($dataJson, $ret);
-        
-        return "aabc";
     }
     
     public function getIsTypeSelectAttribute() {
         return $this->type == self::TYPE_LST;
+    }
+    
+    public function getIsTypeBoolAttribute() {
+        return $this->type == self::TYPE_BOOL;
     }
 
 }

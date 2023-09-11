@@ -16,13 +16,13 @@ class SettingsController extends BaseController
     }
 
     public function save() {
-        $data = request()->all();
-        unset($data['_token']);
-
-        foreach($data as $id => $value) {
-            $m = Setting::find($id);
-            $m->value = $value;
-            $m->save();
+        $settings = Setting::all();
+        $request = request();
+        
+        foreach($settings as $setting) {
+            $defaultValue = $setting->isTypeBool ? 0 : '';
+            $setting->value = $request->post($setting->id, $defaultValue);
+            $setting->save();
         }
         
         return redirect()->back();
